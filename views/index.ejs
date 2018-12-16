@@ -1,0 +1,58 @@
+<% include partials/header.ejs %>
+ 
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Add Customers</h1>
+       
+    </div>
+  </div>
+<% if(errors){ %>
+    <ul>
+    <% errors.forEach(function(error){ %>
+        <li><%= error.msg %></li>
+   <% }) %>
+        </ul>
+<% } %>
+
+<form action="/users/add" method="POST">
+        
+    <div class="container">   
+     <div class="row">
+        <div class="col">
+          <input type="text" name="first_name" class="form-control" placeholder="First name">
+        </div>
+        <div class="col">
+          <input type="text" name="last_name" class="form-control" placeholder="Last name">
+        </div>
+    </div>
+ 
+    <br>
+     
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+       
+    </div>
+    
+    <br>
+    <button type="submit" class="btn btn-primary btn-lg">Enter</button>
+    
+</div>
+
+</form>
+<h1>List Of Customers</h1>
+ 
+<ul>
+    <% users.forEach(function(user){ %>
+        <li>Firstname : <%= user.first_name %>
+            <br>
+            lastname: 
+            <%= user.last_name %>  <a href="#" class="deleteUser" data-id="<%= user._id %>" >Delete</a></li>
+   <% }) %>
+</ul>
+<% include partials/footer.ejs %>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
